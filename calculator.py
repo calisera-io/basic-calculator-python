@@ -27,6 +27,7 @@ def getInput(msg, cast = 'str'):
 def calculator():
     print("Simple Calculator")
     print("Operations: +, -, *, /")
+    print("Hit Ctrl-C to quit")
 
     # Get user input
     num1 = getInput("Enter first number:", 'float')
@@ -52,4 +53,5 @@ def calculator():
     return f"Result: {result}"
 
 # Run calculator
-print(calculator())
+while True:
+    print(calculator())
