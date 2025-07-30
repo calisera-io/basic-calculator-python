@@ -6,13 +6,14 @@ def getInput(msg, cast = 'str'):
     while True:
         try:
             value = input(msg+" ")
+            value = value.strip()
             match cast:
                 case 'int':
                     value = int(value)
                 case 'float':
                     value = float(value)
                 case 'str':
-                    value = str(value).rstrip()
+                    pass
                 case _:
                     raise ValueError('Unkown cast.')
             break
@@ -33,19 +34,20 @@ def calculator():
     num2 = getInput("Enter second number:", 'float')
 
     # Perform calculation
-    if op == "+":
-        result = num1 + num2
-    elif op == "-":
-        result = num1 - num2
-    elif op == "*":
-        result = num1 * num2
-    elif op == "/":
-        if num2 != 0:
-            result = num1 / num2
-        else:
-            return "Error! Division by zero."
-    else:
-        return "Invalid operator!"
+    match op:
+        case "+":
+            result = num1 + num2
+        case "-":
+            result = num1 - num2
+        case "*":
+            result = num1 * num2
+        case "/":
+            if num2:
+                result = num1 / num2
+            else:
+                return "Error! Division by zero."
+        case _:
+            return "Invalid operator!"
 
     return f"Result: {result}"
 
