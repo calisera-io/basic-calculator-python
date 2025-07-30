@@ -15,12 +15,14 @@ def getInput(msg, cast = 'str'):
                 case 'str':
                     pass
                 case _:
-                    raise ValueError('Unkown cast.')
+                    raise Exception('Unkown cast.')
             break
         except KeyboardInterrupt:
             sys.exit()
-        except:
+        except ValueError:
             print("Invalid input. Try again.")
+        except Exception as e: 
+            print(e)
     return value
 
 
